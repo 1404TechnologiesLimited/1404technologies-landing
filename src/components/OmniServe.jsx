@@ -66,58 +66,13 @@ function ProductFrame() {
           </span>
         </div>
 
-        <div className="aspect-[16/10] bg-gradient-to-br from-brand-dark to-brand-mid flex items-center justify-center relative">
-          <div
-            aria-hidden
-            className="absolute inset-0 opacity-[0.30]"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
+        <div className="aspect-[2559/1075] bg-white relative">
+          <img
+            src="/images/omniserve-dashboard.png"
+            alt="OmniServe dashboard — projects, tasks, approvals, and time tracking in one view"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
           />
-
-          {/* Floating sample data chips */}
-          {!reduced && (
-            <>
-              <motion.div
-                className="absolute top-[14%] left-[10%] bg-white/[0.08] backdrop-blur-sm border border-white/[0.16] rounded-lg px-2.5 py-1.5 text-[10px] text-white/90 font-semibold"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <span className="text-brand-tag mr-1">●</span> Xero · synced
-              </motion.div>
-              <motion.div
-                className="absolute bottom-[20%] right-[10%] bg-white/[0.08] backdrop-blur-sm border border-white/[0.16] rounded-lg px-2.5 py-1.5 text-[10px] text-white/90 font-semibold"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-              >
-                <span className="text-brand-on-dark-3 mr-1">●</span> Salesforce
-              </motion.div>
-              <motion.div
-                className="absolute top-[58%] left-[16%] bg-white/[0.08] backdrop-blur-sm border border-white/[0.16] rounded-lg px-2.5 py-1.5 text-[10px] text-white/90 font-semibold"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-              >
-                <span className="text-emerald-400 mr-1">●</span> QuickBooks
-              </motion.div>
-            </>
-          )}
-
-          <div className="relative flex flex-col items-center gap-3 text-center px-6">
-            <motion.img
-              src="/logos/omniserve_symbol_dark.svg"
-              alt="OmniServe"
-              className="w-16 h-16 opacity-90"
-              loading="lazy"
-              animate={reduced ? undefined : { scale: [1, 1.04, 1] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <div className="text-[14px] font-semibold text-white">Dashboard preview</div>
-            <div className="text-[12px] text-brand-on-dark/80 max-w-[320px] leading-relaxed">
-              Real-time KPIs across CRM, helpdesk, finance, and compliance — in one view.
-            </div>
-          </div>
         </div>
       </motion.div>
     </div>
