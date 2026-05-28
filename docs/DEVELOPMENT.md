@@ -9,7 +9,7 @@
 | UI | React | 18.x |
 | Language | JavaScript (JSX) | ES2022 |
 | Styling | Tailwind CSS | 3.x |
-| Database | Firebase Firestore | 11.x |
+| CRM | HubSpot Forms API | v3 |
 | Analytics | Vercel Analytics + Speed Insights | — |
 | Linter | ESLint | 10.x |
 
@@ -36,20 +36,15 @@ npm install
 
 ---
 
-## Environment variables
+## HubSpot contact form
 
-Create a `.env` file at the project root (never commit it):
+Contact form submissions POST to the HubSpot Forms API and create/update contacts in HubSpot CRM. The portal ID, form GUID, and region are hardcoded in [src/lib/hubspot.js](../src/lib/hubspot.js) — these are public values (the same ones HubSpot puts in the embed snippet, no auth required).
 
-```
-VITE_FIREBASE_API_KEY=
-VITE_FIREBASE_AUTH_DOMAIN=
-VITE_FIREBASE_PROJECT_ID=
-VITE_FIREBASE_STORAGE_BUCKET=
-VITE_FIREBASE_MESSAGING_SENDER_ID=
-VITE_FIREBASE_APP_ID=
-```
+Endpoint: `https://api-{region}.hsforms.com/submissions/v3/integration/submit/{portalId}/{formGuid}`
 
-Contact form submissions are written to the `contact_submissions` Firestore collection.
+The form must contain these fields with these internal names: `firstname`, `lastname`, `email`, `phone`, `company`, `service_of_interest`, `message`.
+
+To change the form (e.g. point at a different HubSpot form): edit the three constants at the top of [src/lib/hubspot.js](../src/lib/hubspot.js).
 
 ---
 
@@ -75,7 +70,7 @@ Contact form submissions are written to the `contact_submissions` Firestore coll
 │   ├── data/
 │   │   └── content.js  ← all page copy as plain JS objects/arrays
 │   ├── lib/
-│   │   └── firebase.js ← Firestore client (reads from env vars)
+│   │   └── hubspot.js  ← HubSpot Forms API submit helper (reads from env vars)
 │   ├── App.jsx         ← composes all sections in order, nothing else
 │   ├── index.css       ← Tailwind imports + shared component classes
 │   └── main.jsx        ← React root mount + Vercel Analytics

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { submitContactToHubSpot } from "../lib/hubspot";
 import { ease, duration, container, fadeUp } from "../lib/motion";
 
 const emptyForm = { name: "", email: "", phone: "", company: "", service: "", message: "" };
@@ -53,10 +52,7 @@ export default function Contact({ website, websiteUrl, email, offices, serviceOp
     e.preventDefault();
     setStatus("submitting");
     try {
-      await addDoc(collection(db, "1404technologies_consultation_requests"), {
-        ...form,
-        submittedAt: serverTimestamp(),
-      });
+      await submitContactToHubSpot(form);
       setStatus("success");
     } catch {
       setStatus("error");

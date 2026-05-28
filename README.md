@@ -13,7 +13,7 @@ npm run dev
 
 ## Contact form
 
-Submissions are stored in Firebase Firestore. Copy `.env.example` to `.env` and fill in your Firebase project credentials before running locally.
+Submissions are sent to HubSpot CRM via the [Forms API](https://developers.hubspot.com/docs/api/marketing/forms). The portal ID, form GUID, and region are hardcoded in [src/lib/hubspot.js](src/lib/hubspot.js) — these are public values (the same ones HubSpot puts in the embed snippet).
 
 ## Deploy
 
